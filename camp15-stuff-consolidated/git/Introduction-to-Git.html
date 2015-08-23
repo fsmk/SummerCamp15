@@ -1,0 +1,384 @@
+<!doctype html>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<html>
+    <head>
+        <title>Introduction to Git - Vignesh Prabhu</title>
+        <link rel="stylesheet" type="text/css" href="css/presentation.css" />
+        <link rel="stylesheet" type="text/css" href="css/prettify.css" />
+        <!--link  href="http://fonts.googleapis.com/css?family=Ubuntu:300,300italic,regular,italic,500,500italic,bold,bolditalic" rel="stylesheet" type="text/css"-->
+        <script src="js/jquery-1.6.1.min.js" type="text/javascript"></script>
+        <script src="js/fathom.js"></script>
+        <script src="js/prettify.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('pre').addClass('prettyprint').attr('tabIndex', 0);
+                prettyPrint();
+
+                var fathom = $('#presentation').fathom({
+                    onActivateSlide: function() {
+                        var $slide = $(this);
+                        $slide.find('pre:first').focus();
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="presentation">
+            <div class="slide">
+                <h1 id="title">Introduction to Git</h1>
+                <h1 id="speaker">-Vignesh Prabhu</h1>
+                <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide">
+                <h1>Plan for today</h1>
+                <ul>
+                    <li>Learn about importance of code revisioning</li>
+                    <li>Various Free Software SCM softwares</li>
+                    <li>Try hands-on with Git</li>
+                </ul>
+                <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide">
+                <h1>Sample Use Case</h1>
+                <div class="snippet">
+                    <span style="color:blue">A team of 5 wants to develop a application in C which will calculate area of circle, square, rectangle and triangle. Since time is less, they decide to share their work load.</span>
+                </div>
+                <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide">
+                <h1>College group projects!!!</h1>
+                    <img id="project" src="images/every-group-project-the-hangover.jpg">
+                <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+                
+            </div>
+            <div class="slide">
+                <h1>Let us try to be little more organized!!!</h1>
+                <ul>
+                    <li>4 will write methods to get sides of the shape, and then calculate area of shape and then print it.</li>
+                    <li>1 will write the basic stub of the application including main function, including switch case to call the right method.</li>
+                </ul>
+                <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+                
+            </div>
+            <div class="slide"> 
+                <div class="snippet">
+                    <span style="color:#ff0000">All work done but <b>How do we merge?</b></span>
+                </div>
+                <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+                
+            </div>
+            <div class="slide"> 
+                <div class="snippet">
+                    <span style="color:#00ff00">Enter <b>GIT</b></span>
+                </div>
+                <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+                
+            </div>
+            <div class="slide"> 
+                <h1>Different SCM Softwares</h1>
+                <ul class="withSubList">
+                    <li class="hasSubList">Local Data Model
+                        <ul class="withSubList">
+                            <li class="sublist">RCS - Revision Control System</li>
+                        </ul>
+                    </li>
+                    <li class="hasSubList">Client-Server Model
+                        <ul class="withSubList">
+                            <li class="sublist">CVS - Concurrent Version Systems</li>
+                            <li class="sublist">SVN - Subversion</li>
+                        </ul>
+                    </li>
+                    <li class="hasSubList">Distributed Model
+                        <ul class="withSubList">
+                            <li class="sublist">Git</li>
+                            <li class="sublist">Mercurial</li>
+                            <li class="sublist">Bazaar</li>
+                        </ul>
+                    </li>
+                </ul>
+                 <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide">
+                <h1>Advantages of SCMs</h1>
+                <ul>
+                    <li>Backup</li>
+                    <li>Collaboration</li>
+                    <li>Revisions</li>
+                    <li>Logging</li>
+                    <li>Transparency</li>
+                </ul>
+                 <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <h1>Let us get our hands dirty!</h1>
+                <div class="snippet">
+                    <span style="color:#0000ff">'git config'</span><br><br>
+                    --global user.name "Your Name Here"<br>
+                    --global user.email "your_email@example.com"
+                </div>
+                 <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <div class="snippet">
+                    <span style="color:#0000ff">'git init'</span>
+                </div>
+                 <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <div class="snippet">
+                    <span style="color:#0000ff">'git status'</span>
+                </div>
+                 <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <div class="snippet">
+                    <span style="color:#0000ff">'git add'</span>
+                </div>
+                 <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <div class="snippet">
+                    <span style="color:#0000ff">'git rm'</span>
+                </div>
+                 <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <div class="snippet">
+                    <span style="color:#0000ff">'git commit'</span>
+                </div>
+                 <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <h1>Online Git Repository</h1>
+                <ul>
+                    <li><a href="http://github.com">GitHub</a></li>
+                    <li><a href="http://bitbucket.com">BitBucket</a></li>
+                    <li><a href="https://gitorious.org/">Gitorious</a></li>
+                    <li><a href="https://code.google.com/">Google Code</a></li>
+                    <li><a href="https://gitlab.com/">SourceForge</a></li>
+                </ul>
+                 <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <div class="snippet">
+                    Let us create an account in Gitlab
+                </div>
+                 <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <div class="snippet">
+                    Create new repository in Gitlab
+                </div>
+                 <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <div class="snippet">
+                    <span style="color:#0000ff">'git remote add origin &lt;url&gt;'</span>
+                </div>
+                 <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <div class="snippet">
+                    <span style="color:#0000ff">'git push &lt;remote-name&gt; &lt;branch-name&gt; '</span>
+                </div>
+                 <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <div class="snippet">
+                    <span style="color:#0000ff">Project Forking</span>
+                </div>
+                 <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <div class="snippet">
+                    <span style="color:#0000ff">'git clone'</span>
+                </div>
+                 <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <div class="snippet">
+                    <span style="color:#0000ff">'git pull/fetch'</span>
+                </div>
+                 <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <h1>Few advance topics</h1>
+                <ul>
+                    <li>Code Branch</li>
+                    <li>Code Merge</li>
+                    <li>.gitignore</li>
+                    <li>Tagging</li>
+                    <li>Reverting changes</li>
+                </ul>
+                 <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <h1>Code branching</h1>
+                    <img id="branching" src="images/braches.png">
+                <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <div class="snippet">
+                     '.gitignore file'
+                </div>
+                <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <div class="snippet">
+                    Questions???    
+                </div>
+                <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            <div class="slide"> 
+                <div class="snippet">
+                     <span style="color:#0000ff">Contact me:</span><br>
+                        +91 9535321976<br>
+                        me@viggy.in
+                </div>
+                <div class="footer">
+                        www.fsmk.org
+                </div>
+                <div class="fLogo">
+                        <img id="logo" src="images/FSMK_Logo.png" height="50px" width="50px">
+                </div>
+            </div>
+            
+        </div>
+    </body>
+</html>
